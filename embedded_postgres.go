@@ -122,6 +122,11 @@ func (ep *EmbeddedPostgres) Stop() error {
 	return nil
 }
 
+// SetCacheLocator enables overriding of the default CacheLocator.
+func (ep *EmbeddedPostgres) SetCacheLocator(conf CacheLocatorConfig, builder CacheLocatorBuilder) {
+	ep.cacheLocator = builder(conf)
+}
+
 func startPostgres(binaryExtractLocation string, config Config) error {
 	postgresBinary := filepath.Join(binaryExtractLocation, "bin/pg_ctl")
 	postgresProcess := exec.Command(postgresBinary, "start", "-w",
