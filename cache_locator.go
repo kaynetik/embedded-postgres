@@ -7,8 +7,8 @@ import (
 )
 
 type CacheLocatorConfig struct {
-	dir             string
-	versionStrategy VersionStrategy
+	CacheDirectoryPath string
+	VersionStrategy    VersionStrategy
 }
 
 // CacheLocator retrieves the location of the Postgres binary cache returning it to location.
